@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/anieuwenhuize/deknol/issues"
   },
-  "homepage": "https://github.com/anieuwenhuize/deknol#readme"
+  "homepage": "https://github.com/anieuwenhuize/deknol#readme",
+  "devDependencies": {
+    "jest": "^29.4.1"
+  }
 }
