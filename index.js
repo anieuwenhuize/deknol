@@ -1,7 +1,9 @@
 #!/c/dev/deknol node
-import { squares } from './engine/board.js'
+import { squares, newGame } from './engine/board.js'
+import * as view from './cli/view.js'
 
-let numOfSquares = squares.count();
 
 console.log('Welcome to De Knol.');
-console.log(`I know a chessboard has ${numOfSquares} squares.`);
+newGame();
+
+view.show(squares)

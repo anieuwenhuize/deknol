@@ -1,4 +1,4 @@
-const grid = [
+const squares = [
     ['', '', '', '', '', '', '', ''], // 1st rank
     ['', '', '', '', '', '', '', ''], // 2nd rank
     ['', '', '', '', '', '', '', ''], // 3rd rank
@@ -10,20 +10,15 @@ const grid = [
 ];
 
 const pieces = {
-    king: 'K', queen: 'Q', bishop: 'B', knight: 'N', pawn: 'p'
+    whiteKing: 'K', whiteQueen: 'Q', whiteBishop: 'B', whiteKnight: 'N', whitePawn: 'P',
+    blackKing: 'k', blackQueen: 'q', blackbishop: 'b', blackKnight: 'n', pawn: 'p'
 }
 
 const w_captures = [], 
       b_captures = [];
 
-const squares = {
-    
-        grid,
-        count: () => grid.reduce((sum, rank) => sum + rank.length, 0)    
-}
-
 // Example: e4 -> { rank: 3, file: 4 }
-const algabraicToGridCoords = (loc) => {
+const getCoordsFromAlgabraic = (loc) => {
     let coord = [...loc];
     let f = "abcdefgh".indexOf(coord[0]);
     let r = parseInt(coord[1]) -1;
@@ -31,10 +26,17 @@ const algabraicToGridCoords = (loc) => {
     return { rank: r, file: f }
 }
 
-const initGame = () => {
+const setPiece = (piece, loc) => {
+    let techLoc = getCoordsFromAlgabraic(loc);
+    squares[techLoc.rank][techLoc.file] = piece;
+}
 
+const newGame = () => {
 
+    // set King
+    setPiece(pieces.whiteKing, "e1");
+    setPiece(pieces.blackKing, "e8");
 };
 
 
-export { squares, algabraicToGridCoords };
+export { squares, getCoordsFromAlgabraic, newGame };
