@@ -1,5 +1,6 @@
-let squares = () => {
-    return 8 * 8;
+const squares = {
+
+    count: () => 8 * 8
 }
 
 

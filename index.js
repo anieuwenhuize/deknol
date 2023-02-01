@@ -1,7 +1,7 @@
 #!/c/dev/deknol node
-import * as board from './engine/board.js'
+import { squares } from './engine/board.js'
 
-let squares = board.squares();
+let numOfSquares = squares.count();
 
 console.log('Welcome to De Knol.');
-console.log(`A chess board has ${squares} squares.`);
+console.log(`A chessboard has ${numOfSquares} squares.`);
