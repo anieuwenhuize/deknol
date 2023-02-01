@@ -1,0 +1,22 @@
+{
+  "name": "deknol",
+  "version": "1.0.0",
+  "description": "A minimalistic chess program.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "deknol": "index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anieuwenhuize/deknol.git"
+  },
+  "author": "Andries Nieuwenhuize",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anieuwenhuize/deknol/issues"
+  },
+  "homepage": "https://github.com/anieuwenhuize/deknol#readme"
+}
