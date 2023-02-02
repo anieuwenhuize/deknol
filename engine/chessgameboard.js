@@ -24,4 +24,8 @@ const newGame = () => {
     startingPosition();
 };
 
-export { squares, captures, newGame }
+const move = (san) => {
+    console.log(getPossibleMoves(san))
+}
+
+export { squares, captures, newGame, move }

@@ -1,5 +1,5 @@
 #!/c/dev/deknol node
-import { squares, newGame } from './engine/chessgameboard.js'
+import * as engine from './engine/chessgameboard.js'
 import * as view from './cli/view.js'
 
 import readline from 'readline-promise';
@@ -11,18 +11,17 @@ const rlp = rl.createInterface({
   terminal: true
 });
 
-newGame();
+engine.newGame();
 
 view.intro()
 
-view.show(squares)
-
-let bar = null;
+view.show(engine.squares)
 
 rlp.questionAsync('White to move\n')
     .then(answer => {
         view.clr()
-        view.show(squares)
+        engine.move(answer)
+        view.show(engine.squares)
         rlp.close()
     });
 
