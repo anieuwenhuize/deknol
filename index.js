@@ -1,5 +1,5 @@
 #!/c/dev/deknol node
-import { squares, newGame } from './engine/board.js'
+import { squares, newGame } from './engine/chessgameboard.js'
 import * as view from './cli/view.js'
 
 import readline from 'readline-promise';
