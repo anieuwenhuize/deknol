@@ -25,4 +25,6 @@ const intro = () => {
     console.log('The chess engine with four legs solid on the ground.');
 }
 
-export { show, intro }
+const clr = () => console.clear()
+
+export { show, intro, clr }
