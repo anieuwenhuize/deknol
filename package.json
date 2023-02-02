@@ -26,5 +26,8 @@
   "homepage": "https://github.com/anieuwenhuize/deknol#readme",
   "devDependencies": {
     "jest": "^29.4.1"
+  },
+  "dependencies": {
+    "readline-promise": "^1.0.5"
   }
 }
