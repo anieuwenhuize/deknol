@@ -16,38 +16,28 @@ const getAlgabraicFromCoords = (coord) => {
     return file + coord.rank;
 }
 
-
-
-// const getCurrentLoc = (san) => {
-//     const is_pawn_move = /^[a-h][1-8]$/ // e.g. e4, h6
-//     if (is_pawn_move.test(san)) {
-//         let coords = getCoordsFromAlgabraic(san)
-
-//     }
-// } 
-
-// short algebraic notation (SAN)
-// const movePiece = (color, san) => {
+const isPawnMove = (san) => {
+    const is_pawn_move = /^[a-h][1-8]$/ // e.g. e4, h6
+    return is_pawn_move.test(san);
+}
     
-// }
-
-
-
-// const getType = (san) => {
-//     let coord = getCoordsFromAlgabraic(san)
-//     return getSymbolFromSquares(coord)
-// }
-
 const getSquare = (cn, delta_file, delta_rank) => {
     let coord = getCoordsFromAlgabraic(cn)
-    console.log(coord)
     let coord2 = { 
         file: coord.file + delta_file, 
-        rank: coord.rank + delta_rank }
+        rank: (8 - coord.rank) + delta_rank }
 
     return getAlgabraicFromCoords(coord2);
 }
 
+const getCN = (piece, cns) => {
+    let cn = undefined;
+    cns.forEach(_cn => {
+        let cand = getPiece(_cn);
+        if (cand === piece) cn = _cn;
+    })
+    return cn;
+}
 
 const setPiece = (piece, loc) => {
     let coord = getCoordsFromAlgabraic(loc);
@@ -62,4 +52,4 @@ const getPiece = (cn) => {
 const setPieces = (piece, locs) => 
     locs.forEach(loc => setPiece(piece, loc))
 
-export { squares, captures, pieces, getPiece, setPiece, setPieces, getSquare }
+export { squares, captures, pieces, getPiece, setPiece, setPieces, getSquare, getCN, isPawnMove }
