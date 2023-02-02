@@ -16,13 +16,13 @@ const show = (squares)  => {
             let row =`${currentRank} [${a}|${b}|${c}|${d}|${e}|${f}|${g}|${h}]`
             console.log(row);
     });
+    console.log('.  A B C D E F G H');
 }
 
 const intro = () => {
-    // console.clear()
+    console.clear()
     console.log('Welcome to De Knol.');
     console.log('The chess engine with four legs solid on the ground.');
-    
 }
 
 export { show, intro }

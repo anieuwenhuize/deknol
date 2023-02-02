@@ -57,4 +57,4 @@ const newGame = () => {
 };
 
 
-export { squares, getCoordsFromAlgabraic, newGame };
+export { squares, newGame };
