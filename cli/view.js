@@ -1,8 +1,8 @@
 const show = (squares)  => {
 
-    let currentRank = 0;
+    let currentRank = 8 + 1;
     squares.forEach(rank => {
-        currentRank++;
+        currentRank--;
         
         let a = rank[0],
             b = rank[1],
@@ -18,4 +18,11 @@ const show = (squares)  => {
     });
 }
 
-export { show }
+const intro = () => {
+    // console.clear()
+    console.log('Welcome to De Knol.');
+    console.log('The chess engine with four legs solid on the ground.');
+    
+}
+
+export { show, intro }
