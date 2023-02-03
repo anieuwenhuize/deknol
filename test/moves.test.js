@@ -30,8 +30,6 @@ test('simple pawn move: e4', () => {
     check_all(expects, actuals)
 })
 
-
-
 test('simple bisshop move: Bf3', () => {
     let actuals = test_move('Bf3')
     let expects = {...moves}

@@ -1,5 +1,7 @@
-import { squares, captures, getPiece, setPiece, setPieces, getSquare, getCN, isPawnMove } from './navigationboard.js'
+import { squares, captures, getPiece, setPiece, setPieces, getSquare, getCN, navigation_move } from './navigationboard.js'
 import * as _ from './symbols.js'
+import { files, ranks, diagonals } from './directions.js'
+import { test_move } from './moves.js'
 
 const getRank = (number) => {
     return ranks[number -1];
@@ -15,19 +17,15 @@ const findInFile = (piece, letter) => {
     return getCN(piece, file);
 }
 
-const getMovesPawn = (cn) => {
-    let letter = cn[0];
-    let piece_to_move = findInFile(_.p, letter);
-    
-    return [getSquare(piece_to_move, 0, 1), getSquare(piece_to_move, 0, 2)]
+const chessmove = (san) => {
+    let res = test_move(san);
+
+    if(res.isPawnMove) {
+        let cn_dest = san;
+        let letter = cn_dest[0];
+        let cn_from = findInFile(_.P, letter);
+        navigation_move(cn_from, cn_dest)
+    }
 }
 
-const getPossibleMoves = (san) => {
-    
-    if (isPawnMove(san)) {
-        let cn = san;
-        return getMovesPawn(cn);
-    }
-} 
-
-export { squares, captures, getPiece, setPiece, setPieces, getPossibleMoves }
+export { squares, captures, getPiece, setPiece, setPieces, chessmove }

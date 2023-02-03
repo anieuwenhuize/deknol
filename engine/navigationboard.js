@@ -39,6 +39,11 @@ const setPiece = (piece, loc) => {
     squares[coord.rank][coord.file] = piece;
 }
 
+const clearSquare = (cn) => {
+    let coord = getCoordsFromAlgabraic(cn);
+    squares[coord.rank][coord.file] = ' ';
+}
+
 const getPiece = (cn) => {
     let coord = getCoordsFromAlgabraic(cn)
     return squares[coord.rank][coord.file];
@@ -47,4 +52,10 @@ const getPiece = (cn) => {
 const setPieces = (piece, locs) => 
     locs.forEach(loc => setPiece(piece, loc))
 
-export { squares, captures, getPiece, setPiece, setPieces, getSquare, getCN, isPawnMove }
+const navigation_move = (cn_from, cn_dest) => {
+    let piece = getPiece(cn_from);
+    setPiece(piece, cn_dest)
+    clearSquare(cn_from)
+}
+
+export { squares, captures, getPiece, setPiece, setPieces, getSquare, getCN, navigation_move }

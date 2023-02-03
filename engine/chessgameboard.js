@@ -1,22 +1,23 @@
-import { squares, captures, pieces, getPiece, setPiece, setPieces, getPossibleMoves } from './chessboundboard.js'
+import { squares, captures, getPiece, setPiece, setPieces, chessmove } from './chessboundboard.js'
+import * as _ from './symbols.js'
 
 const startingPosition = () => {
 
     // white force
-    setPiece(pieces.white.king, "e1");
-    setPiece(pieces.white.queen, "d1");
-    setPieces(pieces.white.bishop, ["c1","f1"]);
-    setPieces(pieces.white.knight, ["b1","g1"]);
-    setPieces(pieces.white.rook, ["a1","h1"]);
-    setPieces(pieces.white.pawn, ["e2","d2","c2","f2","b2","g2","a2","h2"]);
+    setPiece(_.K, _.e1);
+    setPiece(_.Q, _.d1);
+    setPieces(_.B, [_.c1,_.f1]);
+    setPieces(_.N, [_.b1,_.g1]);
+    setPieces(_.R, [_.a1,_.h1]);
+    setPieces(_.P, [_.e2,_.d2,_.c2,_.f2,_.b2,_.g2,_.a2,_.h2]);
 
     // // black force
-    setPiece(pieces.black.king, "e8");
-    setPiece(pieces.black.queen, "d8");
-    setPieces(pieces.black.bishop, ["c8","f8"]);
-    setPieces(pieces.black.knight, ["b8","g8"]);
-    setPieces(pieces.black.rook, ["a8","h8"]);
-    setPieces(pieces.black.pawn, ["e7","d7","c7","f7","b7","g7","a7","h7"]);
+    setPiece(_.k, _.e8);
+    setPiece(_.q, _.d8);
+    setPieces(_.b, [_.c8,_.f8]);
+    setPieces(_.n, [_.b8,_.g8]);
+    setPieces(_.r, [_.a8,_.h8]);
+    setPieces(_.p, [_.e7,_.d7,_.c7,_.f7,_.b7,_.g7,_.a7,_.h7]);
 }
 
 const newGame = () => {
@@ -25,7 +26,7 @@ const newGame = () => {
 };
 
 const move = (san) => {
-    console.log(getPossibleMoves(san))
+    chessmove(san)
 }
 
 export { squares, captures, newGame, move }

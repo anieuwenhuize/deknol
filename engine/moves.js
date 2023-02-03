@@ -14,21 +14,16 @@ const isQueenMove = (san) =>
      /^Q[a-h][1-8]$/.test(san);         // e.g. 'Qe6'
 
 const isKingMove = (san) =>
-     /^K[a-h][1-8]$/.test(san);         // e.g. 'ke2'
+     /^K[a-h][1-8]$/.test(san);         // e.g. 'Ke2'
 
 
-const isKingsideCastling = (san) => {
-    const is_pawn_move = /^0\-0$/ // e.g. e4, h6
-    return is_pawn_move.test(san);
-}
+const isKingsideCastling = (san) =>     // i.e. '0-0'
+    /^0\-0$/.test(san);
 
-const isQueensideCastling = (san) => {
-    const is_pawn_move = /^0\-0\-0$/ // e.g. e4, h6
-    return is_pawn_move.test(san);
-}
+const isQueensideCastling = (san) =>    // i.e. '0-0-0'
+    /^0\-0\-0$/.test(san);
 
 const test_move = (san) => {
-
     return {
         isPawnMove: isPawnMove(san),
         isRookMove: isRookMove(san),
