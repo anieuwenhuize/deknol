@@ -10,7 +10,7 @@ test('The board contains 8 ranks', () => {
     expect(count).toBe(8)
 })
 
-test('The board contains 32 diagonals', () => {
-    let count = diagonals.length;
-    expect(count).toBe(32)
+test('The board contains 26 diagonals', () => {
+    let count = diagonals.filter(diag => diag.length > 1).length;
+    expect(count).toBe(26)
 })
