@@ -1,4 +1,5 @@
-import { squares, captures, pieces, getPiece, setPiece, setPieces, getSquare, getCN, isPawnMove } from './navigationboard.js'
+import { squares, captures, getPiece, setPiece, setPieces, getSquare, getCN, isPawnMove } from './navigationboard.js'
+import * as _ from './symbols.js'
 
 const getRank = (number) => {
     return ranks[number -1];
@@ -16,7 +17,7 @@ const findInFile = (piece, letter) => {
 
 const getMovesPawn = (cn) => {
     let letter = cn[0];
-    let piece_to_move = findInFile(pieces.white.pawn, letter);
+    let piece_to_move = findInFile(_.p, letter);
     
     return [getSquare(piece_to_move, 0, 1), getSquare(piece_to_move, 0, 2)]
 }
@@ -29,4 +30,4 @@ const getPossibleMoves = (san) => {
     }
 } 
 
-export { squares, captures, pieces, getPiece, setPiece, setPieces, getPossibleMoves }
+export { squares, captures, getPiece, setPiece, setPieces, getPossibleMoves }

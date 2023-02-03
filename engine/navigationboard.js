@@ -1,7 +1,7 @@
-import { squares, captures, pieces } from './board.js'
+import { squares, captures } from './board.js'
 
-// coordinate notation (CN) e.g. a1 - h8
-// short algebraic notation (SAN) e.g. e4, Nf6
+// coordinate notation (CN) e.g. 'a1', 'h8'
+// short algebraic notation (SAN) e.g. 'e4', 'Nf6'
 
 const getCoordsFromAlgabraic = (cn) => {
     let coord = [...cn];
@@ -15,12 +15,7 @@ const getAlgabraicFromCoords = (coord) => {
     let file = [..."abcdefgh"][coord.file];
     return file + coord.rank;
 }
-
-const isPawnMove = (san) => {
-    const is_pawn_move = /^[a-h][1-8]$/ // e.g. e4, h6
-    return is_pawn_move.test(san);
-}
-    
+  
 const getSquare = (cn, delta_file, delta_rank) => {
     let coord = getCoordsFromAlgabraic(cn)
     let coord2 = { 
@@ -52,4 +47,4 @@ const getPiece = (cn) => {
 const setPieces = (piece, locs) => 
     locs.forEach(loc => setPiece(piece, loc))
 
-export { squares, captures, pieces, getPiece, setPiece, setPieces, getSquare, getCN, isPawnMove }
+export { squares, captures, getPiece, setPiece, setPieces, getSquare, getCN, isPawnMove }
