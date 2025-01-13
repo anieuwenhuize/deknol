@@ -1,16 +1,8 @@
 const _ = '';
 
 // board is in WYSIWYG format
-const squares = [
-    _, _, _, _, _, _, _, _, // 8th rank (56-63)
-    _, _, _, _, _, _, _, _, // 7th rank (48-55)
-    _, _, _, _, _, _, _, _, // 6th rank (40-47)
-    _, _, _, _, _, _, _, _, // 5th rank (32-39)
-    _, _, _, _, _, _, _, _, // 4th rank (24-31)
-    _, _, _, _, _, _, _, _, // 3rd rank (16-23)
-    _, _, _, _, _, _, _, _, // 2nd rank (8-15)
-    _, _, _, _, _, _, _, _  // 1st rank (0-7)
-];
+let squares = new Array(8 * 8),
+    captures = [];
 
 const coords = [
     'a8', 'b8', 'c8','d8', 'e8', 'f8', 'g8', 'h8',
@@ -23,19 +15,60 @@ const coords = [
     'a1', 'b1', 'c1','d1', 'e1', 'f1', 'g1', 'h1'
 ];
 
-const get = (coord) => {
+const _get = (coord) => {
     let index = squares.indexOf(coord);
     return squares[index];
 };
 
-const set = (coord, symbol) => {
+const _set = (coord, piece) => {
     let index = squares.indexOf(coord);
-    squares[index] = symbol;
+    squares[index] = piece;
 };
 
-const captures = {
-    white: [],
-    black: []
+const _isPiece = (piece) => {
+    return piece === _;
 }
 
-export { squares, captures, get, set };
+const _clear = (coord) => {
+    return _set(coord, _);
+};
+
+const _leave = (coord) => {
+    let piece = _get(coord);
+    _clear(coord);
+
+    return piece;
+}
+
+const _capture = (coord, piece) => {   
+    let oldPiece = _get(coord);
+
+    if(_isPiece(oldPiece)) 
+        captures.push(oldPiece);
+    
+    _set(coord, piece);
+}
+
+const reset = () => {
+    squares = squares.map(() => _);
+    captures = [];
+}
+
+const put = _set;
+
+const peak = (coord) => {
+    return _get(coord);
+};
+
+const move = (coordA, coordB) => {
+    let piece = _leave(coordA);
+
+    _capture(coordB, piece);
+};
+
+const getGrid = () => squares;
+const getCaptures = () => captures;
+
+const init = reset;
+
+export { getGrid, getCaptures, peak, put, move, reset, init };
