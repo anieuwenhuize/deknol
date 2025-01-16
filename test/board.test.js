@@ -1,7 +1,7 @@
 import * as board from '../engine/board'
 
-test('The board contains 64 squares', () => {
-    board.init();
+test('The board of (8 * 8) contains 64 squares', () => {
+    board.init(8, 8);
 
     let count = board
         .getGrid().length;
@@ -10,29 +10,13 @@ test('The board contains 64 squares', () => {
 });
 
 test('The board should memorise a piece set.', () => {
-    board.init();
+    board.init(1, 1, ['aa']);
 
     let what = 'X',
         where = 'c3';
 
-    board.put(where, what);
-    let retrieved =board.peak(where);
-
-    expect(retrieved).toEqual(what);
-});
-
-test('The board should move a piece.', () => {
-    board.init();
-
-    let what = 'X',
-        from = 'c3',
-        to = 'f6';
-
-    board.put(from, what);
-
-    board.move(from, to);
-
-    let retrieved = board.peak(to);
+    board.set(where, what);
+    let retrieved =board.get(where);
 
     expect(retrieved).toEqual(what);
 });

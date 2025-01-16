@@ -1,5 +1,15 @@
 const show = (squares)  => {
 
+//    1  2  3
+//
+// 1  0 |   | 
+//   ---+---+---
+// 2    |   | x
+//   ---+---+---
+// 3    | 0 | 
+
+// use Minimax algorithm
+
     let currentRank = 8 + 1;
     squares.forEach(rank => {
         currentRank--;
@@ -22,7 +32,7 @@ const show = (squares)  => {
 const intro = () => {
     console.clear()
     console.log('Welcome to De Knol.');
-    console.log('The chess engine with four legs solid on the ground.');
+    console.log('The chess engine with all four legs solid on the ground.');
 }
 
 const clr = () => console.clear()
