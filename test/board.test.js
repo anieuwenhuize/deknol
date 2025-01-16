@@ -9,7 +9,25 @@ test('The board of (8 * 8) contains 64 squares', () => {
     expect(count).toBe(64)
 });
 
-test('The board should memorise a piece set.', () => {
+test('getRowFor a board of (2* 2) yields 2 rows', () => {
+    board.init(2, 2, ['a1', 'a2', 'b1', 'b2']);
+
+    let count = board
+        .getRowFor('a').length;
+
+    expect(count).toBe(2)
+});
+
+test('getColumnFor a board of (2* 2) yields 2 rows', () => {
+    board.init(2, 2, ['a1', 'a2', 'b1', 'b2']);
+
+    let count = board
+        .getColFor('2').length;
+
+    expect(count).toBe(2)
+});
+
+test('The board should memorise a symbol set.', () => {
     board.init(1, 1, ['aa']);
 
     let what = 'X',

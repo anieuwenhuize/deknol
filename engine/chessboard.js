@@ -15,7 +15,7 @@ const coords = [
 ];
 
 
-board.init(8, 8, coords);
+board.init(8, 8, coords, _);
 
 
     
