@@ -9,7 +9,7 @@ const get = (coord) => {
     return _grid[index];
 };
 
-const getAllFor = (coords) => {
+const getAllBy = (coords) => {
     let all = coords.map((id) => _grid[id]);
     return all;
 };
@@ -23,28 +23,28 @@ const reset = (symbol) => {
     _grid = _grid.map(() => symbol);
 }
 
-const getGrid = () => _grid;
+const getAll = () => _grid;
 
-const getColFor = (id) => {
+const getAllByCol = (id) => {
     let row_coords = _coords.filter((coord) => {
         let row_id = coord.split('')[1];
 
         return id === row_id;
     });
 
-    let row = getAllFor(row_coords);
+    let row = getAllBy(row_coords);
 
     return row;
 } 
 
-const getRowFor = (id) => {
+const getAllByRow = (id) => {
     let row_coords = _coords.filter((coord) => {
         let row_id = coord.split('')[0];
 
         return id === row_id;
     });
 
-    let row = getAllFor(row_coords);
+    let row = getAllBy(row_coords);
 
     return row;
 } 
@@ -57,4 +57,4 @@ const init = (width, height, coords, symbol) => {
     _coords = coords;
 };
 
-export { getGrid, getRowFor, getColFor, get, set, reset, init };
+export { getAll, getAllBy, getAllByRow, getAllByCol, get, set, reset, init };

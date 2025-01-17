@@ -4,7 +4,7 @@ test('The board of (8 * 8) contains 64 squares', () => {
     board.init(8, 8);
 
     let count = board
-        .getGrid().length;
+        .getAll().length;
 
     expect(count).toBe(64)
 });
@@ -13,7 +13,7 @@ test('getRowFor a board of (2* 2) yields 2 rows', () => {
     board.init(2, 2, ['a1', 'a2', 'b1', 'b2']);
 
     let count = board
-        .getRowFor('a').length;
+        .getAllByRow('a').length;
 
     expect(count).toBe(2)
 });
@@ -22,7 +22,7 @@ test('getColumnFor a board of (2* 2) yields 2 rows', () => {
     board.init(2, 2, ['a1', 'a2', 'b1', 'b2']);
 
     let count = board
-        .getColFor('2').length;
+        .getAllByCol('2').length;
 
     expect(count).toBe(2)
 });
