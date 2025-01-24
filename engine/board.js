@@ -1,60 +1,65 @@
-let _grid = [],
-    _coords = [];
-
-const _indexOf = (coord) => 
-    _coords.indexOf(coord);
-
-const get = (coord) => {
-    let index = _indexOf(coord);
-    return _grid[index];
-};
-
-const getAllBy = (coords) => {
-    let all = coords.map((id) => _grid[id]);
-    return all;
-};
-
-const set = (coord, symbol) => {
-    let index = _indexOf(coord);
-    _grid[index] = symbol;
-};
-
-const reset = (symbol) => {
-    _grid = _grid.map(() => symbol);
-}
+let _width = 0, 
+    _height = 0,
+    _grid = [];
 
 const getAll = () => _grid;
 
-const getAllByCol = (id) => {
-    let row_coords = _coords.filter((coord) => {
-        let row_id = coord.split('')[1];
+// array.filter seems to have problems.
+const _filter = (array, func) => {
+    const res = [];
+    for(let i=0;i<array.length;i++) {
+        let item = array[i];
 
-        return id === row_id;
+        if (func(item, i, array)) {
+            res.push(item);
+        }
+    }
+
+    return res;
+}
+
+const getRow = (index) => {
+
+    const start = index * _width,
+        end = start + _width;
+
+    return _grid.slice(start, end);
+}
+
+const getCol = (index) => 
+     _filter(_grid,  (_, idx) => {
+        return (idx + index) % _width === 0;
+     });
+
+
+const getDiagonal = (rowIdx, colIdx) => {
+
+    // Diagonals go from south-west to north-east orientation: /
+    return _grid.filter((_, idx) => {
+        
+        // r0, c0 => i0             (c0 * _width)
+        // r0, c1 => i1, i8         (c1 * _width)
+        // r0, c2 => i2, i9, i16    (c1 * _width)
+        // all differences are 7 = _width - 1
+        let index = rowIdx * colIdx; 
+        return idx % index === 0;
     });
+}
 
-    let row = getAllBy(row_coords);
+const getAntiDiagonal = (rowIdx, colIdx) => {
+    
+    // orientation: \
+    return _grid.filter((_, idx) => {
+        
 
-    return row;
-} 
-
-const getAllByRow = (id) => {
-    let row_coords = _coords.filter((coord) => {
-        let row_id = coord.split('')[0];
-
-        return id === row_id;
+        return idx % index === 0;
     });
+}
 
-    let row = getAllBy(row_coords);
-
-    return row;
-} 
-
-const init = (width, height, coords, symbol) => {
+const init = (width, height) => {
+    _width = width;
+    _height = height;
     _grid = new Array(width * height);
-
-    let sym = (symbol) ? symbol : '';
-    reset(sym);
-    _coords = coords;
 };
 
-export { getAll, getAllBy, getAllByRow, getAllByCol, get, set, reset, init };
+export { getAll, init, getRow, getCol };

@@ -1,4 +1,4 @@
-import * as board from './board.js'
+import * as board from './playableboard.js'
 
 const _ = '';
 
