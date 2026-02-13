@@ -8,7 +8,7 @@ service.use(express.json());
 
 service.get('/api/ping', (req, res) => {
 
-    res.json({time: Date.now(), msg: 'All is good.'})
+    res.json({time: Date.now(), msg: 'pong'})
 });
 
 service.listen(PORT_NUM, () => {
