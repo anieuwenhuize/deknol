@@ -6,9 +6,9 @@ const service = express();
 
 service.use(express.json());
 
-service.get('api/ping', (req, res) => {
+service.get('/api/ping', (req, res) => {
 
-    res.json({id: Date.now(), msg: 'All is good.'})
+    res.json({time: Date.now(), msg: 'All is good.'})
 });
 
 service.listen(PORT_NUM, () => {
